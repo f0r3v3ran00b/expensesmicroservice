@@ -3,17 +3,18 @@ package com.transience.expenses.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by sanju on 2/01/2016.
  */
 @Entity
-@Table(name = "tag", schema = "expenses")
+@Table(name = "tags", schema = "expenses")
 public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tagSeqGen")
-    @SequenceGenerator(name = "tagSeqGen", sequenceName = "expenses.tag_id_seq")
+    @SequenceGenerator(name = "tagSeqGen", sequenceName = "expenses.tags_id_seq")
     private Long id;
 
     @Column(name = "tag_name")
@@ -21,6 +22,18 @@ public class Tag {
 
     @Column(name = "tag_description")
     private String tagDescription;
+
+    @ManyToMany
+    @JoinTable(name = "expenses_x_tags", joinColumns = {
+            @JoinColumn(name = "tag_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "expense_id",
+                    nullable = false, updatable = false) })
+    private Set<Expense> tagExpenses;
+
+
+
+
+
 
     public Tag() {
     }
