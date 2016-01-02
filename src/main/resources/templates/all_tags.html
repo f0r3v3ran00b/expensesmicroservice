@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>All Tags</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <link href="../static/css/common.css" th:href="@{/css/common.css}" rel="stylesheet" media="screen"/>
+    <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <img src="../static/images/banner1.jpg" width="500"
+             th:src="@{/images/banner1.jpg}"/>
+        <h1>Hello</h1>
+
+        <h2>Fellow Spring Framework Gurus!!!</h2>
+
+        <table id="_tbl_alltags" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Tag Id</th>
+                <th>Tag Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tag : ${allTags}">
+                <td th:text="${tag.id}">Sample tagId</td>
+                <td th:text="${tag.tagName}">Sample tagName</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+<script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" th:src="@{/webjars/datatables/1.10.9/js/jquery.dataTables.min.js}"></script>
+<script>
+    $(document).ready(function() {
+        $('#_tbl_alltags').DataTable();
+    })
+</script>
+</body>
+</html>
