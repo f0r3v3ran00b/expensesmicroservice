@@ -8,14 +8,12 @@ import javax.persistence.*;
  * Created by sanju on 2/01/2016.
  */
 @Entity
-@Table(name = "TAG", schema = "EXPENSE")
+@Table(name = "tag", schema = "expenses")
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "tagSeqGen")
-    @SequenceGenerator(name = "tagSeqGen",
-            sequenceName = "TAG_ID_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tagSeqGen")
+    @SequenceGenerator(name = "tagSeqGen", sequenceName = "expenses.tag_id_seq")
     private Long id;
 
     @Column(name = "tag_name")

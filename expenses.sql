@@ -1,80 +1,60 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : local-postgres
- Source Server Type    : PostgreSQL
- Source Server Version : 90305
- Source Host           : localhost
- Source Database       : expensedb
- Source Schema         : expense
-
- Target Server Type    : PostgreSQL
- Target Server Version : 90305
- File Encoding         : utf-8
-
- Date: 01/02/2016 11:42:44 AM
-*/
-
--- ----------------------------
---  Table structure for Tag
--- ----------------------------
-DROP TABLE IF EXISTS "expense"."Tag";
-CREATE TABLE "expense"."Tag" (
-    "id" SERIAL PRIMARY KEY NOT NULL,
-    "tag_name" varchar(50) NOT NULL COLLATE "default",
-    "tag_description" bit varying(100)
+drop table if exists expenses.tag;
+create table expenses.tag (
+    id serial primary key not null,
+    tag_name varchar(50) not null UNIQUE ,
+    tag_description varchar(100)
 )
-WITH (OIDS=FALSE);
-ALTER TABLE "expense"."Tag" OWNER TO "sanju";
+with (oids=false);
+alter table expenses.tag owner to sanju;
 
 
 
 -- ----------------------------
---  Table structure for Expense
+--  table structure for expense
 -- ----------------------------
-DROP TABLE IF EXISTS "expense"."Expense";
-CREATE TABLE "expense"."Expense" (
-    "id" SERIAL PRIMARY KEY  NOT NULL,
-    "expense_amount" numeric NOT NULL,
-    "expense_description" varchar(100) COLLATE "default",
-    "expense_datetime" timestamp(6) NULL
+drop table if exists expenses.expenses;
+create table expenses.expenses (
+    id serial primary key  not null,
+    expense_amount numeric not null,
+    expense_description varchar(100),
+    expense_datetime timestamp(6) null
 )
-WITH (OIDS=FALSE);
-ALTER TABLE "expense"."Expense" OWNER TO "sanju";
+with (oids=false);
+alter table expenses.expenses owner to sanju;
 
 
 -- ----------------------------
---  Table structure for Expense_X_Tag
+--  table structure for expense_x_tag
 -- ----------------------------
-DROP TABLE IF EXISTS "expense"."Expense_X_Tag";
-CREATE TABLE "expense"."Expense_X_Tag" (
-    "tag_id" SERIAL PRIMARY KEY  NOT NULL,
-    "expense_id" integer NOT NULL
+drop table if exists expenses.expense_x_tag;
+create table expenses.expense_x_tag (
+    tag_id serial primary key  not null,
+    expense_id integer not null
 )
-WITH (OIDS=FALSE);
-ALTER TABLE "expense"."Expense_X_Tag" OWNER TO "sanju";
+with (oids=false);
+alter table expenses.expense_x_tag owner to sanju;
 
 
 
 -- ----------------------------
---  Table structure for Currency
+--  table structure for currency
 -- ----------------------------
-DROP TABLE IF EXISTS "expense"."Currency";
-CREATE TABLE "expense"."Currency" (
-    "id" SERIAL PRIMARY KEY  NOT NULL,
-    "currency_code" varchar(5) NOT NULL COLLATE "default",
-    "currency_description" varchar(25) COLLATE "default"
+drop table if exists expenses.currency;
+create table expenses.currency (
+    id serial primary key  not null,
+    currency_code varchar(5) not null,
+    currency_description varchar(25)
 )
-WITH (OIDS=FALSE);
-ALTER TABLE "expense"."Currency" OWNER TO "sanju";
+with (oids=false);
+alter table expenses.currency owner to sanju;
 
 
 
 
 -- ----------------------------
---  Foreign keys structure for table Expense_X_Tag
+--  foreign keys structure for table expense_x_tag
 -- ----------------------------
-ALTER TABLE "expense"."Expense_X_Tag" ADD CONSTRAINT "fk_tagId" FOREIGN KEY ("tag_id") REFERENCES "expense"."Tag" ("id") ON UPDATE CASCADE ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "expense"."Expense_X_Tag" ADD CONSTRAINT "fk_expenseId" FOREIGN KEY ("expense_id") REFERENCES "expense"."Expense" ("id") ON UPDATE CASCADE ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+alter table expenses.expense_x_tag add constraint fk_tagid foreign key (tag_id) references expenses.tag (id) on update cascade on delete no action not deferrable initially immediate;
+alter table expenses.expense_x_tag add constraint fk_expenseid foreign key (expense_id) references expenses.expenses (id) on update cascade on delete no action not deferrable initially immediate;
 
 commit;
