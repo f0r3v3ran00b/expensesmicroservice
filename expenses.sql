@@ -1,3 +1,19 @@
+-- JUST NEED TO CREATE A DATABASE IN A DATABASE SERVER LIKE SO:
+-- -- CREATE DATABASE expensedb - this name is referenced in the application.properties file
+-- WITH OWNER = sanju
+-- ENCODING = 'UTF8'
+-- TABLESPACE = pg_default
+-- LC_COLLATE = 'en_AU.UTF-8'
+-- LC_CTYPE = 'en_AU.UTF-8'
+-- CONNECTION LIMIT = -1;
+
+------------------------------
+
+-- IF NEEDED, CREATE THE FOLLOWING USER:
+-- DROP ROLE sanju;
+-- CREATE ROLE sanju LOGIN
+-- ENCRYPTED PASSWORD 'md5d17baee385ae46bb69e1fe1d783f9c8c'
+-- SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION VALID UNTIL '2014-02-24 00:00:00';
 
 
 DROP SCHEMA IF EXISTS expenses CASCADE ;
