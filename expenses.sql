@@ -57,4 +57,41 @@ alter table expenses.currency owner to sanju;
 alter table expenses.expense_x_tag add constraint fk_tagid foreign key (tag_id) references expenses.tag (id) on update cascade on delete no action not deferrable initially immediate;
 alter table expenses.expense_x_tag add constraint fk_expenseid foreign key (expense_id) references expenses.expenses (id) on update cascade on delete no action not deferrable initially immediate;
 
+
+
+
+
+
+
+
+
+
+-- INSERTS HERE
+INSERT INTO expenses.tag(tag_name) VALUES ('landline');
+INSERT INTO expenses.tag(tag_name) VALUES ('booze');
+INSERT INTO expenses.tag(tag_name) VALUES ('internet');
+INSERT INTO expenses.tag(tag_name) VALUES ('lunch');
+INSERT INTO expenses.tag(tag_name) VALUES ('cable');
+INSERT INTO expenses.tag(tag_name) VALUES ('medicines');
+INSERT INTO expenses.tag(tag_name) VALUES ('groceries');
+INSERT INTO expenses.tag(tag_name) VALUES ('indian-groceries');
+INSERT INTO expenses.tag(tag_name) VALUES ('cab');
+INSERT INTO expenses.tag(tag_name) VALUES ('cafe');
+INSERT INTO expenses.tag(tag_name) VALUES ('family');
+INSERT INTO expenses.tag(tag_name) VALUES ('gadgets');
+INSERT INTO expenses.tag(tag_name) VALUES ('downloads');
+INSERT INTO expenses.tag(tag_name) VALUES ('certification');
+INSERT INTO expenses.tag(tag_name) VALUES ('learning');
+INSERT INTO expenses.tag(tag_name) VALUES ('shoes');
+INSERT INTO expenses.tag(tag_name) VALUES ('clothes');
+INSERT INTO expenses.tag(tag_name) VALUES ('grooming');
+INSERT INTO expenses.tag(tag_name) VALUES ('snacks');
+INSERT INTO expenses.tag(tag_name) VALUES ('mobile');
+INSERT INTO expenses.tag(tag_name) VALUES ('apps');
+INSERT INTO expenses.tag(tag_name) VALUES ('software');
+INSERT INTO expenses.tag(tag_name) VALUES ('kitchenware');
+INSERT INTO expenses.tag(tag_name) VALUES ('furnishing');
+INSERT INTO expenses.tag(tag_name) VALUES ('home-appliances');
+INSERT INTO expenses.tag(tag_name) VALUES ('water');
+
 commit;
