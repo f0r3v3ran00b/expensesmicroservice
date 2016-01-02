@@ -50,7 +50,7 @@ drop table if exists expenses.currency CASCADE ;
 drop table if exists expenses.currencies CASCADE ;
 create table expenses.currencies (
     id serial primary key  not null,
-    currency_code varchar(5) not null,
+    currency_code varchar(5) not null UNIQUE ,
     currency_description varchar(25)
 )
 with (oids=false);
@@ -101,5 +101,16 @@ INSERT INTO expenses.tags(tag_name) VALUES ('kitchenware');
 INSERT INTO expenses.tags(tag_name) VALUES ('furnishing');
 INSERT INTO expenses.tags(tag_name) VALUES ('home-appliances');
 INSERT INTO expenses.tags(tag_name) VALUES ('water');
+
+--// Currencies
+INSERT INTO expenses.currencies(currency_code) VALUES ('AUD');
+INSERT INTO expenses.currencies(currency_code) VALUES ('USD');
+INSERT INTO expenses.currencies(currency_code) VALUES ('INR');
+INSERT INTO expenses.currencies(currency_code) VALUES ('EUR');
+INSERT INTO expenses.currencies(currency_code) VALUES ('GBP');
+INSERT INTO expenses.currencies(currency_code) VALUES ('JPY');
+INSERT INTO expenses.currencies(currency_code) VALUES ('SGD');
+INSERT INTO expenses.currencies(currency_code) VALUES ('CHF');
+
 
 commit;
