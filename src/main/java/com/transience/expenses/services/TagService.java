@@ -1,4 +1,4 @@
-package com.transience.expenses;
+package com.transience.expenses.services;
 
 import com.transience.expenses.domain.Tag;
 import com.transience.expenses.repositories.TagRepository;

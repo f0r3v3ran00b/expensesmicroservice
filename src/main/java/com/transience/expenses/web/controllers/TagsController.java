@@ -1,6 +1,6 @@
-package com.transience.expenses.controllers;
+package com.transience.expenses.web.controllers;
 
-import com.transience.expenses.TagService;
+import com.transience.expenses.services.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +25,12 @@ public class TagsController {
 
         return "all_tags";
     }
+
+/*    @RequestMapping(method= RequestMethod.GET, value="/tag/api/list", produces="application/json")
+    public @ResponseBody
+    List<Tag> getAllTagsJson(Model model) {
+        return tagService.getAllTags();
+    }*/
 
 
 

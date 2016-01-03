@@ -1,13 +1,12 @@
-package com.transience.expenses.controllers;
+package com.transience.expenses.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ExpensesController {
-    @RequestMapping("/expense/list")
+public class IndexController {
+    @RequestMapping("/")
     String index(){
-
-        return "list_expenses";
+        return "index";
     }
 }
